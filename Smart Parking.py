@@ -65,6 +65,11 @@ def register_vehicle():
 
     print("The parking lot has spaces for your vehicle")
     plate = input("Enter the plate number: ")
+
+    if plate in plates:
+        print(f"Plate {plate} is already registered.")
+        return
+
     cc_number = input("Enter your credit card number: ")
 
     while True:
@@ -123,6 +128,12 @@ def display_charges():
         total += parking_fees[i]
     print(f"Total daily charges: ${total:.2f}")
     input("Please press enter to continue....")
+
+def save_charges():
+    """Save charges to a file"""
+    if not plates:
+        print("The parking lot is empty.")
+        return
 
     filename = input("Enter the filename to save charges (e.g., charges.txt): ")
     with open(filename, "w") as file:
@@ -196,6 +207,13 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+
 
 
 
